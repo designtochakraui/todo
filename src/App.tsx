@@ -48,6 +48,11 @@ function App() {
     setTaskInput("");
   };
 
+  const handleRemoveTask = (id: string) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
+  };
+
   return (
     <HStack
       w="full"
@@ -58,7 +63,7 @@ function App() {
     >
       <Flex w="full" maxW={400} flexDirection="column" gap={4}>
         <Text as="h1" fontSize={30} fontWeight="bold">
-          todo list
+          TODO
         </Text>
 
         <TaskForm
@@ -77,8 +82,9 @@ function App() {
               key={task.id}
               id={task.id}
               label={task.label}
-              onChange={() => handleFinishTask(task.id)}
               status={task.status}
+              taskChangeStatus={() => handleFinishTask(task.id)}
+              removeTask={() => handleRemoveTask(task.id)}
             />
           ))
         ) : (
@@ -102,8 +108,9 @@ function App() {
               key={task.id}
               id={task.id}
               label={task.label}
-              onChange={() => handleReopenTask(task.id)}
+              taskChangeStatus={() => handleReopenTask(task.id)}
               status={task.status}
+              removeTask={() => handleRemoveTask(task.id)}
             />
           ))
         ) : (

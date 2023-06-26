@@ -1,4 +1,6 @@
-import { Button, Flex, Input } from "@chakra-ui/react";
+import { Flex, IconButton, Input } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
+
 import { ChangeEvent } from "react";
 
 interface TaskFormProps {
@@ -10,13 +12,15 @@ export const TaskForm = ({ value, changeInput, createTask }: TaskFormProps) => {
   return (
     <Flex w="full" alignItems="center" justifyContent="space-between" gap={2}>
       <Input placeholder="New task..." value={value} onChange={changeInput} />
-      <Button
+      <IconButton
+        icon={<AddIcon />}
         onClick={createTask}
         colorScheme="blue"
         isDisabled={value.length === 0}
+        aria-label="create task"
       >
         Add Task
-      </Button>
+      </IconButton>
     </Flex>
   );
 };
