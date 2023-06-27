@@ -3,9 +3,9 @@ import {
   Card,
   CardBody,
   Checkbox,
-  Text,
-  ScaleFade,
   IconButton,
+  ScaleFade,
+  Text,
 } from "@chakra-ui/react";
 
 interface TaskCardProps {
@@ -15,6 +15,7 @@ interface TaskCardProps {
   taskChangeStatus: () => void;
   removeTask: () => void;
 }
+
 export const TaskCard = ({
   id,
   status,
@@ -39,10 +40,10 @@ export const TaskCard = ({
             <Text as={status ? "del" : "b"}>{label}</Text>
           </Checkbox>
           <IconButton
+            aria-label="delete task"
             variant="ghost"
             colorScheme="red"
             icon={<DeleteIcon />}
-            aria-label="delete task"
             onClick={removeTask}
           />
         </CardBody>
